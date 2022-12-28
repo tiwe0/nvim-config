@@ -1,0 +1,7 @@
+{
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "~/.config/nvim/my_snippets"
+  ],
+  "Lua.telemetry.enable": true
+}

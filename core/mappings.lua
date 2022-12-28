@@ -1,6 +1,7 @@
 local keymap = vim.keymap
 local api = vim.api
 local uv = vim.loop
+local opt = vim.opt
 
 -- Save key strokes (now we do not need to press shift to enter command mode).
 keymap.set({ "n", "x" }, ";", ":")
@@ -132,6 +133,24 @@ keymap.set("n", "<leader><space>", "<cmd>StripTrailingWhitespace<cr>", { desc = 
 
 -- check the syntax group of current cursor position
 keymap.set("n", "<leader>st", "<cmd>call utils#SynGroup()<cr>", { desc = "check syntax group" })
+
+-- Window split vertically
+keymap.set("n", "<leader>ss", "<cmd>vsplit<cr>", { desc = "split window vertically"})
+
+-- Window split horizontally
+keymap.set("n", "<leader>sh", "<cmd>split<cr>", { desc = "split window horizontally"})
+
+keymap.set("n", "<leader>tl", function()
+  if(opt.wrap:get())
+    then
+      opt.wrap = false
+    else
+      opt.wrap = true
+    end
+  end
+  ,{ desc = "toggle line wrap" })
+
+keymap.set("n", "<leader>tz", "<cmd>ZenMode<cr>", { desc = "toggle zen mode" })
 
 -- Copy entire buffer.
 keymap.set("n", "<leader>y", "<cmd>%yank<cr>", { desc = "yank entire buffer" })

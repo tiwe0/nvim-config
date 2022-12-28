@@ -49,8 +49,11 @@ packer.startup {
     use { "wbthomason/packer.nvim", opt = true }
 
     use { "onsails/lspkind-nvim", event = "VimEnter" }
+    use { "honza/vim-snippets" }
     -- auto-completion engine
-    use { "hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]] }
+    -- use { "hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]] }
+    use { "hrsh7th/nvim-cmp", after = "lspkind-nvim" }
+    use { "neoclide/coc.nvim", branch = "release", config = [[require('config.coc-nvim')]]}
 
     -- nvim-cmp completion sources
     use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
@@ -63,7 +66,8 @@ packer.startup {
     end
 
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
-    use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
+    -- use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
+    use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp" }
 
     if vim.g.is_mac then
       use {
@@ -74,8 +78,8 @@ packer.startup {
       }
     end
 
-    -- Python indent (follows the PEP8 style)
-    use { "Vimjas/vim-python-pep8-indent", ft = { "python" } }
+    -- Python indent (follows the PEP8 style) has bug
+    -- use { "Vimjas/vim-python-pep8-indent", ft = { "python" } }
 
     -- Python-related text object
     use { "jeetsukumaran/vim-pythonsense", ft = { "python" } }
